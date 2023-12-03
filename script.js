@@ -12,7 +12,7 @@ collisionCanvas.width = 1366;
 collisionCanvas.height = 768;
 let gameRunning = false;
 let timeToNextEnemy = 0;
-let enemyInterval = 2000;
+let enemyInterval = 1000;
 let lastTime = 0;
 let score = 0;
 let lives = 5;
@@ -44,7 +44,7 @@ class Ghost{
                 }
             }
             else {
-                score++;
+                score += 2;
             }
         }
         // Handles sprite animation
@@ -210,7 +210,10 @@ function drawGameOver(){
     ctx.font = "100px Impact";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
-    ctx.fillText("GAME OVER [" + score + " points]", canvas.width/2, canvas.height/2);
+    ctx.textBaseline = "top";
+    ctx.fillText("GAME OVER", canvas.width/2, canvas.height/4);
+    ctx.font = "50px Impact";
+    ctx.fillText("Score: " + score, canvas.width/2, canvas.height/2);
 }
 
 function animate(timestamp){
